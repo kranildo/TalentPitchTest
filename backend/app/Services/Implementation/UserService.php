@@ -24,7 +24,7 @@ class UserService implements IUserService
     {
         $per_page = empty($filtro["per_page"]) ?  null : $filtro["per_page"];
         $query = $this->model->newQuery();
-        $query->filtrar($filtro);
+        $query->filter($filtro);
         $users = $query->paginate($per_page);
         return $users;
     } 
@@ -75,7 +75,7 @@ class UserService implements IUserService
         $query = $this->model->newQuery();
         $query->whereNotNull('deleted_at');
         $query->withTrashed();
-        $query->filtrar($filtro);
+        $query->filter($filtro);
         $users = $query->paginate($per_page);
         return $users;
     }

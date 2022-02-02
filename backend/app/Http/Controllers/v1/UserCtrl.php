@@ -112,10 +112,15 @@ class UserCtrl extends Controller
         return $this->Json(404, "Data not found");
     }
 
-    public function getById()
+    public function getById($id)
     {
-        $user_id = auth('api')->user()->id;
-        $user = $this->service->getUserById($user_id);
+
+        $me = auth('api')->user();
+        if (!$me->hasAnyPermission(['user.getbyid'])) {
+            return $this->Json(403, "Without permission");
+        }
+
+        $user = $this->service->getUserById($id);
         if ($user) {
             return $this->Json(200, "Found data", $user->toArray());
         }
