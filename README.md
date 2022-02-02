@@ -1,7 +1,7 @@
 # Prueba Back - Laravel 
 Create a new project to manage companies and their employees. 
 
-The backend I used Laravel Lumen
+The backend I used Laravel Lumen -> PHP 7.4.9
 The frontend I used Angular.
 
 # To start the frontend
